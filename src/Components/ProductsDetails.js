@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ProductsContext } from "../contexts/ProductsContextProvider";
+
+// Style
+import styles from "./ProductDetails.module.css";
+
 const ProductsDetails = () => {
   const prod = useContext(ProductsContext);
   const { id } = useParams();
@@ -14,19 +18,17 @@ const ProductsDetails = () => {
   const { title, price, image, description, category } = data;
 
   return (
-    <div>
-      <img src={image} alt="ax" />
-      <div>
-        <h1>{title}</h1>
-        <p>{description}</p>
-        <p>
+    <div className={styles.container}>
+      <img className={styles.image} src={image} alt="ax" />
+      <div className={styles.textContainer}>
+        <h3>{title}</h3>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.category}>
           Category :<span>{category}</span>
         </p>
-        <div>
-          <button>{price} $</button>
-          <button>
-            <Link to="/products">Back to Shop</Link>
-          </button>
+        <div className={styles.buttonContainer}>
+          <span className={styles.price}>{price} $</span>
+          <Link to="/products">Back to Shop</Link>
         </div>
       </div>
     </div>

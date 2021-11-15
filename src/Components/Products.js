@@ -3,17 +3,13 @@ import { ProductsContext } from "../contexts/ProductsContextProvider";
 
 import Product from "./shared/Product";
 
+// Style
+import styles from "./Store.module.css";
+
 const Products = () => {
   const products = useContext(ProductsContext);
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        flexWrap: "wrap",
-      }}
-    >
+    <div className={styles.container}>
       {products.map((prod) => (
         <Product key={prod.id} product={prod} />
       ))}
