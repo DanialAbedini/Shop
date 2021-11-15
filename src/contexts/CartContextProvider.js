@@ -9,6 +9,19 @@ const initialState = {
   checkout: false,
 };
 
+const doit = (items) => {
+  const totalCount = items.reduce(
+    (total, product) => (total += product.quntity),
+    0
+  );
+  const totalPrice = items.reduce(
+    (total, product) => (total += product.quntity * product.price),
+    0
+  );
+
+  return { totalCount, totalPrice };
+};
+
 const cartRuduce = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
@@ -22,6 +35,7 @@ const cartRuduce = (state, action) => {
         ...state,
         checkout: false,
         selectedItems: [...state.selectedItems],
+        ...doit(state.selectedItems),
       };
     case "REMOVE_ITEM":
       const newSelectedItems = state.selectedItems.filter(
@@ -31,6 +45,7 @@ const cartRuduce = (state, action) => {
         ...state,
         checkout: false,
         selectedItems: [...newSelectedItems],
+        ...doit(state.selectedItems),
       };
 
     case "INCREASE":
@@ -40,6 +55,7 @@ const cartRuduce = (state, action) => {
       state.selectedItems[indexI].quntity++;
       return {
         ...state,
+        ...doit(state.selectedItems),
         checkout: false,
       };
 
@@ -50,6 +66,7 @@ const cartRuduce = (state, action) => {
       state.selectedItems[indexD].quntity--;
       return {
         ...state,
+        ...doit(state.selectedItems),
         checkout: false,
       };
     case "CLEAR":
