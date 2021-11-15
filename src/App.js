@@ -14,9 +14,9 @@ const App = () => {
       <ProductsContextProvider>
         <CartContextProvider>
           <Routes>
+            <Route path="/" element={<Navigate to="/products" />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductsDetails />} />
-            <Route path="*" element={<Navigate to={<Products />} />} />
           </Routes>
         </CartContextProvider>
       </ProductsContextProvider>
