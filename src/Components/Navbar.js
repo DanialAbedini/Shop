@@ -9,9 +9,9 @@ const Navbar = () => {
   return (
     <div>
       <div>
-        <Link to="/shopcart">Products</Link>
+        <Link to="/products">Products</Link>
         <div>
-          <img src={shopIcon} alt="" />
+          <Link to="/shopcart"><img src={shopIcon} alt="" /></Link>
           <span>{state.totalCount}</span>
         </div>
       </div>

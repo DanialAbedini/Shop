@@ -45,7 +45,7 @@ const cartRuduce = (state, action) => {
         ...state,
         checkout: false,
         selectedItems: [...newSelectedItems],
-        ...doit(state.selectedItems),
+        ...doit(newSelectedItems),
       };
 
     case "INCREASE":
